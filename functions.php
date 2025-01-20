@@ -7,13 +7,9 @@ require_once('logdump.php');
 *	custom widgets to display the data you passed in the set_query_var() function.
 */
 
-function get_external_data( $id ) {
+function get_external_data( $id = "tt1871257" ) {
     // Fetch data from API or database
 	error_log('Fetching external data');
     $response = wp_remote_get("https://www.omdbapi.com/?i={$id}&apikey=14c8c5bf");
     return json_decode(wp_remote_retrieve_body($response), true);
 }
-function enq() {
-	wp_enqueue_style('efront', $plugin_dir = WP_PLUGIN_DIR . '/elementor-pro/assets/css/templates/frontend.min.css');
-}
-add_action( 'wp_enqueue_scripts', 'enq' );
